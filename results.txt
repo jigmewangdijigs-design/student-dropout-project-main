@@ -1,0 +1,89 @@
+ICT324 DATA MINING EXPERIMENT RESULTS
+Predicting Student Dropout & Academic Success
+Team United
+Run date: 18 November 2026
+
+REPRODUCIBILITY
+Python: 3.10.11
+pandas: 2.3.3
+NumPy: 2.2.6
+scikit-learn: 1.7.2
+Random state: 42
+
+DATASET QUALITY
+Rows: 4,424
+Input features: 36
+Categorical features one-hot encoded: 17
+Numeric/ordinal features: 19
+Missing values: 0
+Exact duplicate rows: 0
+Target labels retained as strings: Dropout, Enrolled, Graduate
+Training records: 3,539
+Untouched holdout records: 885
+
+5-FOLD STRATIFIED CROSS-VALIDATION ON TRAINING DATA ONLY
+Baseline (Most Frequent)
+  Accuracy: 49.93% ± 0.06%
+  Weighted F1: 33.25% ± 0.07%
+  Macro F1: 22.20% ± 0.02%
+  Macro OvR ROC-AUC: 50.00% ± 0.00%
+
+Logistic Regression
+  Accuracy: 77.62% ± 0.79%
+  Weighted F1: 76.38% ± 0.89%
+  Macro F1: 70.17% ± 1.42%
+  Macro OvR ROC-AUC: 88.84% ± 0.88%
+
+Decision Tree
+  Accuracy: 68.01% ± 0.64%
+  Weighted F1: 68.29% ± 1.08%
+  Macro F1: 61.83% ± 1.43%
+  Macro OvR ROC-AUC: 72.77% ± 1.04%
+
+Random Forest
+  Accuracy: 77.39% ± 0.68%
+  Weighted F1: 75.30% ± 1.02%
+  Macro F1: 68.19% ± 1.57%
+  Macro OvR ROC-AUC: 88.66% ± 0.83%
+
+Histogram Gradient Boosting
+  Accuracy: 77.62% ± 1.43%
+  Weighted F1: 76.72% ± 1.58%
+  Macro F1: 70.74% ± 2.06%
+  Macro OvR ROC-AUC: 89.03% ± 1.09%
+
+SELECTED MODEL
+Histogram Gradient Boosting
+Selection rule: highest mean training-only cross-validation weighted F1
+
+UNTOUCHED 20% HOLDOUT RESULTS
+Accuracy: 74.80%
+Weighted precision: 73.97%
+Weighted recall: 74.80%
+Weighted F1: 74.27%
+Macro ROC-AUC (one-vs-rest): 88.32%
+
+PER-CLASS HOLDOUT RESULTS
+Class      Precision  Recall  F1      Support  OvR ROC-AUC
+Dropout    77.07%     72.18%  74.55%  284      90.77%
+Enrolled   46.10%     40.88%  43.33%  159      81.63%
+Graduate   82.01%     88.69%  85.22%  442      92.56%
+
+CONFUSION MATRIX
+Rows are true classes; columns are predicted classes.
+Labels: Dropout, Enrolled, Graduate
+[[205, 44, 35],
+ [ 43, 65, 51],
+ [ 18, 32, 392]]
+
+TOP RANDOM FOREST FEATURE IMPORTANCES
+Curricular units 2nd sem (approved): 10.18%
+Curricular units 1st sem (approved): 7.91%
+Curricular units 2nd sem (grade): 7.50%
+Curricular units 1st sem (grade): 5.94%
+Curricular units 2nd sem (evaluations): 3.74%
+Admission grade: 3.39%
+Curricular units 1st sem (evaluations): 3.36%
+Age at enrollment: 3.19%
+Previous qualification (grade): 3.02%
+Tuition fees up to date = No: 2.82%
